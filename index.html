@@ -15,7 +15,15 @@
       href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
   </head>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
   <body class="main-page">
     <div class="trust-banner">
       Moodnest is a self-care tool, not a substitute for professional mental
@@ -59,20 +67,27 @@
           </h3>
           <section class="dashboard">
             <a href="/breath.html" class="card">
+              <div class="card-icon"><i class="fa-solid fa-wind"></i></div>
               <h3>Guided Breathing</h3>
               <p>
                 Settle your nervous system with a customizable visual and audio
                 breathing timer.
               </p>
             </a>
+
             <a href="/moodLog.html" class="card">
+              <div class="card-icon">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </div>
               <h3>Daily Mood Log</h3>
               <p>
                 Check in with yourself. Log how you feel, tag what influenced
                 it, and voice-journal.
               </p>
             </a>
+
             <a href="/resources.html" class="card">
+              <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
               <h3>Resource Hub</h3>
               <p>
                 Curated mental health articles, therapy apps, and immediate

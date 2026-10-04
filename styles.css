@@ -67,12 +67,14 @@ body {
   top: 0;
   left: 0;
   z-index: 1000;
+  top: 2.5rem;
 }
 
 #navbar__logo {
-  height: 50px;
+  height: 40px;
   width: auto;
   cursor: pointer;
+  filter: brightness(0);
 }
 
 .navbar__container {
@@ -106,16 +108,24 @@ body {
 /* hero section */
 .main {
   background-color: var(--purple-muted);
+  min-height: 100vh;
+  padding-top: 8.5rem; /* 2.5rem banner + 5rem navbar + 1rem breathing room */
+  padding-bottom: var(--space-12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .main__container {
   display: flex;
   align-items: center;
-  justify-self: center;
-  align-content: center;
-  height: 96vh;
-  max-width: 800px;
+  justify-content: center;
+  width: 100%;
+  min-height: auto;
+  height: auto;
+  max-width: 1100px; /* expanded slightly to comfortably fit the 3 dashboard cards */
+  margin: 0 auto;
   text-align: center;
-  padding-right: 400px;
+  padding: 0 var(--space-4);
 }
 .main__content h1 {
   font-size: 3rem;
@@ -316,12 +326,21 @@ body {
 }
 
 .trust-banner {
-  background-color: var(--purple-muted);
-  color: var(--purple-primary);
+  background-color: var(--text-main);
+  color: #fff;
   text-align: center;
   padding: var(--space-2) var(--space-4);
   font-size: 0.875rem;
   font-weight: 500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .trust-banner a {
   color: var(--purple-primary);
@@ -350,22 +369,17 @@ body {
     box-shadow 0.2s;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
 }
 .card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
-.card-icon {
-  width: 48px;
-  height: 48px;
-  background: var(--purple-muted);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
+.card-icon i {
+  color: var(--purple-primary);
+  font-size: 2rem;
   justify-content: center;
-  font-size: 1.5rem;
-  margin-bottom: var(--space-4);
 }
 .card h3 {
   margin-bottom: var(--space-2);
