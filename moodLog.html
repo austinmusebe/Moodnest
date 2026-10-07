@@ -84,6 +84,35 @@
         font-weight: 500;
         transform: scale(1.02);
       }
+      .journal-input {
+        width: 100%;
+        background: white;
+        border: none;
+        border-radius: 12px;
+        padding: 24px;
+        min-height: 150px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+        resize: none;
+        font-size: 1.1rem;
+        color: #2c2a30;
+        font-family: inherit;
+      }
+      .journal-input:focus { outline: 2px solid #ebe6f5; }
+      
+      .action-row { display: flex; justify-content: flex-end; width: 100%; gap: 16px; margin-top: 16px; }
+      .btn-voice { 
+        background: white; color: #5f3acd; border: none; 
+        width: 50px; height: 50px; border-radius: 50%; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05); cursor: pointer; transition: all 0.2s;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .btn-voice:hover { background: #ebe6f5; }
+      .btn-done { 
+        background: #5f3acd; color: white; border: none; 
+        padding: 0 32px; border-radius: 9999px; font-weight: 500; 
+        cursor: pointer; transition: background 0.2s; height: 50px; 
+      }
+      .btn-done:hover { background: #4b2da3; }
     </style>
   </head>
   <body class="mood-page">
@@ -196,33 +225,20 @@
             </div>
           </div>
 
-          <h2 class="text-xl text-purple-700 mb-4">Let's write about it</h2>
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4 mt-8 font-['Poppins']">Add a note (optional)</h2>
 
           <textarea
             id="mood-notes"
-            class="w-full p-4 border-2 border-purple-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 h-32 resize-none"
-            placeholder="How is your day going? How has it affected your mood? Or anything else..."
+            class="journal-input"
+            placeholder="I felt okay today but didn't sleep well..."
           ></textarea>
 
-          <div class="flex justify-center mt-2">
+          <div class="flex justify-center mt-4">
             <button
               type="button"
               id="start-recording"
-              class="bg-purple-400 text-white px-4 py-2 rounded-full hover:bg-purple-500 transition flex items-center space-x-2"
+              class="bg-purple-400 text-white px-6 py-3 rounded-full hover:bg-purple-500 transition flex items-center shadow-sm"
             >
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 1v22m6-6a6 6 0 01-12 0V5a6 6 0 0112 0v12z"
-                />
-              </svg>
               <span id="mic-label">Start Talking</span>
             </button>
           </div>
@@ -230,7 +246,7 @@
           <div class="flex justify-center mt-6">
             <button
               id="save-mood-button"
-              class="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition"
+              class="bg-purple-600 text-white px-8 py-3 rounded-full hover:bg-purple-700 transition shadow-sm font-medium"
             >
               Save Mood Entry
             </button>
@@ -239,17 +255,7 @@
       </div>
     </div>
 
-    <div class="fixed bottom-8 right-8 opacity-50">
-      <img src="poses/yoga2.png" alt="Yoga Pose 1" class="w-32 h-32" />
-    </div>
 
-    <div class="fixed bottom-8 left-8 opacity-50">
-      <img
-        src="poses/yoga3.png"
-        alt="Yoga Pose 2"
-        class="w-32 h-32 transform -scale-x-100"
-      />
-    </div>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const moodIcons = document.querySelectorAll(".mood-icon");
