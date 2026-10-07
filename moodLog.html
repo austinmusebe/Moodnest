@@ -67,16 +67,22 @@
         align-items: center;
       }
       .reason-bubble {
-        transition: all 0.3s ease;
-        opacity: 0.4;
-        filter: grayscale(100%);
+        padding: 10px 20px;
+        border-radius: 9999px;
+        background: white;
+        color: #64606a;
+        border: none;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.2s;
       }
       .reason-bubble.selected {
-        opacity: 1;
-        filter: grayscale(0%);
-        transform: scale(1.05);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background: #ebe6f5;
+        color: #5f3acd;
+        box-shadow: none;
+        font-weight: 500;
+        transform: scale(1.02);
       }
     </style>
   </head>
@@ -147,43 +153,43 @@
           </h2>
           <div class="flex flex-wrap justify-center gap-3 mb-6">
             <div
-              class="reason-bubble px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm"
+              class="reason-bubble"
               data-reason="friends"
             >
               Friends
             </div>
             <div
-              class="reason-bubble px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm"
+              class="reason-bubble"
               data-reason="family"
             >
               Family
             </div>
             <div
-              class="reason-bubble px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm"
+              class="reason-bubble"
               data-reason="education"
             >
               Education
             </div>
             <div
-              class="reason-bubble px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm"
+              class="reason-bubble"
               data-reason="work"
             >
               Work
             </div>
             <div
-              class="reason-bubble px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm"
+              class="reason-bubble"
               data-reason="sleep"
             >
               Sleep
             </div>
             <div
-              class="reason-bubble px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm"
+              class="reason-bubble"
               data-reason="health"
             >
               Health
             </div>
             <div
-              class="reason-bubble px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm"
+              class="reason-bubble"
               data-reason="diet"
             >
               Diet
