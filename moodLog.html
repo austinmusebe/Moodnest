@@ -18,33 +18,53 @@
     />
     <style>
       .mood-icon {
+        width: 72px;
+        height: 72px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        filter: grayscale(100%);
+        opacity: 0.4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .mood-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
         transition: transform 0.3s ease;
       }
       .mood-icon:hover {
-        transform: scale(1.1);
+        filter: grayscale(50%);
+        opacity: 0.8;
+        transform: translateY(-4px);
+      }
+      .mood-icon.greyed-out {
+        opacity: 0.4;
+        filter: grayscale(100%);
+      }
+      .mood-icon.selected {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.15) translateY(-4px);
+      }
+      .mood-icon.selected img {
+        filter: drop-shadow(0 8px 16px rgba(95, 58, 205, 0.25));
       }
       body {
-        padding-top: 5rem; /* Match navbar height */
+        padding-top: 5rem;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        background: linear-gradient(180deg, #f3e8ff, #d1c4e9);
-        font-family: "Poppins", sans-serif;
+        background-color: #faf9f7; 
+        color: #2c2a30;
+        font-family: "Inter", sans-serif;
       }
       .content-wrapper {
         flex-grow: 1;
         display: flex;
         justify-content: center;
         align-items: center;
-      }
-      .mood-icon.greyed-out {
-        opacity: 0.3;
-        filter: grayscale(100%);
-      }
-      .mood-icon.selected {
-        transform: scale(1.2);
-        border: 2px solid #5f3acd;
-        border-radius: 50%;
       }
       .reason-bubble {
         transition: all 0.3s ease;
@@ -103,25 +123,21 @@
             </h2>
 
           <!-- Mood Icons Section (unchanged) -->
-          <div class="flex justify-center space-x-4 mb-8">
+          <div class="flex justify-center space-x-4 mb-8 flex-wrap gap-4">
             <div class="mood-icon cursor-pointer" data-mood="angry">
-              <img src="emojis/angry.png" alt="Angry" class="w-12 h-12" />
+              <img src="emojis/angry.png" alt="Angry" />
             </div>
             <div class="mood-icon cursor-pointer" data-mood="sad">
-              <img src="emojis/sad.png" alt="Sad" class="w-12 h-12" />
+              <img src="emojis/sad.png" alt="Sad" />
             </div>
             <div class="mood-icon cursor-pointer" data-mood="neutral">
-              <img src="emojis/neutral.png" alt="Neutral" class="w-12 h-12" />
+              <img src="emojis/neutral.png" alt="Neutral" />
             </div>
             <div class="mood-icon cursor-pointer" data-mood="happy">
-              <img src="emojis/happy.png" alt="Happy" class="w-12 h-12" />
+              <img src="emojis/happy.png" alt="Happy" />
             </div>
             <div class="mood-icon cursor-pointer" data-mood="very_happy">
-              <img
-                src="emojis/very_happy.png"
-                alt="Very Happy"
-                class="w-12 h-12"
-              />
+              <img src="emojis/very_happy.png" alt="Very Happy" />
             </div>
           </div>
 
