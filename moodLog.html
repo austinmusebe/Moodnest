@@ -310,6 +310,13 @@
 
           recognition.onerror = (event) => {
             console.error("Speech recognition error:", event.error);
+            if (event.error === 'not-allowed') {
+              alert("Microphone access was denied. Please click the lock icon in your address bar and allow microphone access.");
+            } else if (event.error === 'no-speech') {
+              // Ignore silent no-speech errors which happen naturally
+            } else {
+              alert("Speech recognition error: " + event.error + ". (Note: This feature works best in Chrome or Edge).");
+            }
             stopListening();
           };
 
