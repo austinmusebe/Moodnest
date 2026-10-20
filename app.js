@@ -42,6 +42,9 @@ const mode__button = document.getElementById("mode__button");
 const breathingElement = document.getElementById("breath__state");
 const breathRectangle = document.getElementById("rectangle__container");
 const breathCircle = document.getElementById("breathCircle");
+const playIcon = document.getElementById("playIcon");
+const modeIcon = document.getElementById("modeIcon");
+const modeLabel = document.getElementById("modeLabel");
 
 // Start Session Button Listener (legacy fallback)
 document
@@ -51,6 +54,55 @@ document
     if (sec) sec.style.display = "block";
     this.style.display = "none";
   });
+
+// Play / Pause Breathing Button
+breath__button?.addEventListener("click", function () {
+  isOngoing = !isOngoing;
+  if (isOngoing) {
+    if (playIcon) playIcon.className = "fa-solid fa-pause";
+    this.setAttribute("title", "Pause breathing");
+    this.setAttribute("aria-label", "Pause breathing");
+    startBreathing();
+  } else {
+    if (playIcon) playIcon.className = "fa-solid fa-play";
+    this.setAttribute("title", "Start breathing");
+    this.setAttribute("aria-label", "Start breathing");
+    stopBreathing();
+  }
+});
+
+// Mode Toggle Button (Replaces settings toggle with Box Breathing switcher)
+mode__button?.addEventListener("click", function () {
+  if (breathingMode === "default") {
+    breathingMode = "box";
+    if (modeLabel) modeLabel.innerHTML = "Box Breathing &bull; 4-4-4-4";
+    if (modeIcon) modeIcon.className = "fa-solid fa-wind";
+    this.setAttribute("title", "Current: Box Breathing (Click for Gentle Breathing)");
+    this.classList.add("active");
+    console.log("Switched to Box Breathing");
+
+    if (isOngoing) {
+      clearInterval(breathingInterval);
+      boxStep = 0;
+      triggerBoxBreathing();
+      breathingInterval = setInterval(triggerBoxBreathing, 4000);
+    }
+  } else {
+    breathingMode = "default";
+    if (modeLabel) modeLabel.innerHTML = "Gentle Breathing &bull; 6s In / 6s Out";
+    if (modeIcon) modeIcon.className = "fa-solid fa-cube";
+    this.setAttribute("title", "Current: Gentle Breathing (Click for Box Breathing)");
+    this.classList.remove("active");
+    console.log("Switched to Gentle Breathing");
+
+    if (isOngoing) {
+      clearInterval(breathingInterval);
+      isInhaling = true;
+      triggerBreathing();
+      breathingInterval = setInterval(triggerBreathing, 6000);
+    }
+  }
+});
 
 function startBreathing() {
   if (!breathingElement) return;
@@ -148,11 +200,27 @@ function stopBreathing() {
 // TTS section
 let ttsEnabled = false;
 const ttsBtn = document.getElementById("ttsToggleButton");
+const ttsIcon = document.getElementById("ttsIcon");
 const breathState = document.getElementById("breath__state");
 
 ttsBtn?.addEventListener("click", () => {
   ttsEnabled = !ttsEnabled;
-  ttsBtn.textContent = ttsEnabled ? "voice on" : "Toggle voice";
+  if (ttsIcon) {
+    ttsIcon.className = ttsEnabled
+      ? "fa-solid fa-volume-high"
+      : "fa-solid fa-volume-xmark";
+  }
+  ttsBtn.classList.toggle("active", ttsEnabled);
+  ttsBtn.setAttribute(
+    "title",
+    ttsEnabled
+      ? "Voice guidance active (click to mute)"
+      : "Voice guidance muted (click to unmute)",
+  );
+  ttsBtn.setAttribute(
+    "aria-label",
+    ttsEnabled ? "Mute voice guidance" : "Unmute voice guidance",
+  );
 });
 
 let naturalVoice = null;
