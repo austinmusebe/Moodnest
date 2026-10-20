@@ -11,30 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // }
 });
 
-// function createCircle() {
-//   const circle = document.createElement("div");
-//   circle.classList.add("circle");
-
-//   const size = Math.random() * 200 + 20; // Circle size between 20 and 220px
-//   const posX = Math.random() * (window.innerWidth - size);
-//   const posY = Math.random() * (window.innerHeight - size);
-
-//   const colors = ["#d6cafc", "#8e7bca", "#bcabef"];
-//   const color = colors[Math.floor(Math.random() * colors.length)];
-
-//   circle.style.width = `${size}px`;
-//   circle.style.height = `${size}px`;
-//   circle.style.left = `${posX}px`;
-//   circle.style.top = `${posY}px`;
-//   circle.style.backgroundColor = color;
-
-//   document.body.appendChild(circle);
-
-//   setTimeout(() => {
-//     circle.remove();
-//   }, 3000);
-// }
-
 const startingMinutes = 10;
 let time = startingMinutes * 60;
 
@@ -86,11 +62,13 @@ breath__button.onclick = function buttonToggle() {
 };
 mode__button.onclick = function buttonToggle() {
   if (breathingMode === "default") {
-    mode__button.innerHTML = "Mode: Box";
     breathingMode = breathingModes[1];
+    mode__button.innerHTML = "Current: Box";
+    console.log("Switched to:", breathingMode);
   } else {
-    mode__button.innerHTML = "Mode: Default"; // Fixed the extra '__button'
     breathingMode = breathingModes[0];
+    mode__button.innerHTML = "Current: Default";
+    console.log("Switched to:", breathingMode);
   }
 };
 
@@ -104,8 +82,8 @@ function startBreathing() {
     breathingInterval = setInterval(triggerBreathing, 6000);
   } else if (breathingMode === "box") {
     boxStep = 0;
-    triggerBoxBreathing;
-    breathingInterval = setInterval(triggerBreathing, 4000);
+    triggerBoxBreathing();
+    breathingInterval = setInterval(triggerBoxBreathing, 4000);
   }
 }
 
@@ -146,6 +124,7 @@ function triggerBoxBreathing() {
       textMessage = "inhale";
       speechText = "inhale";
       bgColor = "white";
+      console.log("inhale");
       break;
     // hold
     case 1:
@@ -153,6 +132,7 @@ function triggerBoxBreathing() {
       textMessage = "hold";
       speechText = "hold";
       bgColor = "gray";
+      console.log("hold");
       break;
     //exhale
     case 2:
@@ -160,6 +140,7 @@ function triggerBoxBreathing() {
       textMessage = "exhale";
       speechText = "exhale";
       bgColor = "black";
+      console.log("exhale");
       break;
     //hold
     case 3:
@@ -167,6 +148,7 @@ function triggerBoxBreathing() {
       textMessage = "hold";
       speechText = "hold";
       bgColor = "gray";
+      console.log("hol");
       break;
 
     default:
@@ -196,7 +178,7 @@ const breathState = document.getElementById("breath__state");
 
 ttsBtn?.addEventListener("click", () => {
   ttsEnabled = !ttsEnabled;
-  ttsBtn.textContent = ttsEnabled ? "voice on" : "toggle voice";
+  ttsBtn.textContent = ttsEnabled ? "voice on" : "Toggle voice";
 });
 
 let naturalVoice = null;
