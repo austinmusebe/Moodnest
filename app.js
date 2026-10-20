@@ -57,8 +57,12 @@ let breathTime = 15;
 let isInhaling = true;
 let isOngoing = false;
 let breathingInterval = null;
+let breathingModes = ["default", "box"];
+let breathingMode = breathingModes[0];
+let boxStep = 0;
 
 const breath__button = document.getElementById("breath__button");
+const mode__button = document.getElementById("mode__button");
 const breathingElement = document.getElementById("breath__state");
 const breathRectangle = document.getElementById("rectangle__container");
 
@@ -80,33 +84,103 @@ breath__button.onclick = function buttonToggle() {
     stopBreathing();
   }
 };
+mode__button.onclick = function buttonToggle() {
+  if (breathingMode === "default") {
+    mode__button.innerHTML = "Mode: Box";
+    breathingMode = breathingModes[1];
+  } else {
+    mode__button.innerHTML = "Mode: Default"; // Fixed the extra '__button'
+    breathingMode = breathingModes[0];
+  }
+};
 
 function startBreathing() {
   if (!breathingElement || !breathRectangle) return;
-  isInhaling = true;
+
   triggerBreathing();
-  breathingInterval = setInterval(triggerBreathing, 6000);
+  if (breathingMode === "default") {
+    isInhaling = true;
+    triggerBreathing;
+    breathingInterval = setInterval(triggerBreathing, 6000);
+  } else if (breathingMode === "box") {
+    boxStep = 0;
+    triggerBoxBreathing;
+    breathingInterval = setInterval(triggerBreathing, 4000);
+  }
 }
 
 function triggerBreathing() {
-  if (isInhaling) {
-    breathRectangle.style.animation = "none";
-    void breathRectangle.offsetHeight;
-    breathRectangle.style.animation = "fadeOutBreath 6s ease-out";
-    breathingElement.innerHTML = "inhale...";
-    speakBreathingStep("Breathe in");
-    breathRectangle.style.backgroundColor = "white";
-    breathingElement.style.color = "purple";
-  } else {
-    breathRectangle.style.animation = "none";
-    void breathRectangle.offsetHeight;
-    breathRectangle.style.animation = "fadeInBreath 6s ease-in";
-    breathingElement.innerHTML = "exhale...";
-    speakBreathingStep("Breathe out");
-    breathRectangle.style.backgroundColor = "black";
-    breathingElement.style.color = "purple";
-  }
+  breathRectangle.style.animation = "none";
+  void breathRectangle.offsetHeight;
+
+  const animationName = isInhaling
+    ? "fadeOutBreath 6s ease-out"
+    : "fadeInBreath 6s ease-in";
+  const textMessage = isInhaling ? "inhale..." : "exhale...";
+  const speechText = isInhaling ? "Breathe in" : "Breathe out";
+  const bgColor = isInhaling ? "white" : "black";
+
+  breathRectangle.style.animation = animationName;
+  breathRectangle.style.backgroundColor = bgColor;
+
+  breathingElement.innerHTML = textMessage;
+  breathingElement.style.color = "purple";
+
+  speakBreathingStep(speechText);
+
   isInhaling = !isInhaling;
+}
+
+function triggerBoxBreathing() {
+  breathRectangle.style.animation = "none";
+  void breathRectangle.offsetHeight;
+
+  let animationName;
+  let textMessage;
+  let speechText;
+  let bgColor;
+  switch (boxStep) {
+    //inhale
+    case 0:
+      animationName = "fadeOutBreath 4s ease-out";
+      textMessage = "inhale";
+      speechText = "inhale";
+      bgColor = "white";
+      break;
+    // hold
+    case 1:
+      animationName = "none";
+      textMessage = "hold";
+      speechText = "hold";
+      bgColor = "gray";
+      break;
+    //exhale
+    case 2:
+      animationName = "fadeInBreath 4s ease-in";
+      textMessage = "exhale";
+      speechText = "exhale";
+      bgColor = "black";
+      break;
+    //hold
+    case 3:
+      animationName = "none";
+      textMessage = "hold";
+      speechText = "hold";
+      bgColor = "gray";
+      break;
+
+    default:
+      break;
+  }
+
+  breathRectangle.style.animation = animationName;
+  breathRectangle.style.backgroundColor = bgColor;
+
+  breathingElement.innerHTML = textMessage;
+  breathingElement.style.color = "purple";
+
+  speakBreathingStep(speechText);
+  boxStep = (boxStep + 1) % 4;
 }
 
 function stopBreathing() {
