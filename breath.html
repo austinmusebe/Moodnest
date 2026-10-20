@@ -47,58 +47,57 @@
         </ul>
       </div>
     </nav>
-    <!-- Hero Section -->
-    <div class="breathing__text">
-      <h1 class="breathe__title">Breathe</h1>
-      <h2 class="breathe__text">
-        Pause. Inhale. Exhale.
-        <br />
-        This page is your space to slow down and find calm.
-        <br />
-        Follow the guided breathing timer to center yourself, reduce stress,
-        <br />
-        and regain focus. Just a few deep breaths can make a
-        <br />
-        difference—helping you reset, relax, and feel more present.
-        <br />
-        Whenever life feels overwhelming, come here, breathe deeply, and let go.
-      </h2>
-    </div>
-    <div class="start__button__container">
-      <button id="startSessionButton" class="modern-button">
-        Start a breathing session?
-      </button>
-    </div>
-    <!-- Hidden Breathing Timer Section -->
-    <div class="breath__timer" id="breathingSection" style="display: none">
-      <div class="rectangle__container" id="rectangle__container">
-        <div class="countdown__section">
-          <div class="time">
-            <!-- <div class="total__time">
-              <h2>Total Time:</h2>
-              <h2 class="seconds" id="countdown">10:00</h2>
-            </div> -->
-            <div class="inhale__exhale">
-              <p id="breath__state">Inhale... Exhale</p>
-            </div>
-          </div>
-        </div>
-        <div class="button__container">
-          <button id="breath__button" class="modern-button">Start</button>
-        </div>
-        <div class="button__container">
-          <button id="mode__button" class="modern-button">Change Mode</button>
-        </div>
-        <div
-          class="tts__button__container"
-          style="display: flex; justify-content: center; margin-top: 1rem"
-        >
-          <button id="ttsToggleButton" class="modern-button">
-            Toggle voice
-          </button>
+    <!-- Immersive Breathing Section (Variant B) -->
+    <main class="breathe-container">
+      <div
+        class="mode-indicator"
+        id="modeIndicator"
+        title="Current breathing mode"
+      >
+        <span class="mode-dot"></span>
+        <span id="modeLabel">Gentle Breathing &bull; 6s In / 6s Out</span>
+      </div>
+
+      <h1 class="breathe-text" id="breath__state">Press play to begin</h1>
+
+      <div class="immersive-circle-wrapper" id="rectangle__container">
+        <div class="immersive-circle" id="breathCircle">
+          <div class="circle-inner-ring"></div>
         </div>
       </div>
-    </div>
+
+      <div class="controls" role="toolbar" aria-label="Breathing session controls">
+        <button
+          type="button"
+          class="icon-btn"
+          id="ttsToggleButton"
+          title="Toggle voice guidance"
+          aria-label="Toggle voice guidance"
+        >
+          <i class="fa-solid fa-volume-xmark" id="ttsIcon"></i>
+        </button>
+
+        <button
+          type="button"
+          class="icon-btn primary"
+          id="breath__button"
+          title="Start breathing"
+          aria-label="Start breathing"
+        >
+          <i class="fa-solid fa-play" id="playIcon"></i>
+        </button>
+
+        <button
+          type="button"
+          class="icon-btn"
+          id="mode__button"
+          title="Switch to Box Breathing (4-4-4-4)"
+          aria-label="Switch breathing mode"
+        >
+          <i class="fa-solid fa-cube" id="modeIcon"></i>
+        </button>
+      </div>
+    </main>
 
     <script src="app.js"></script>
   </body>
