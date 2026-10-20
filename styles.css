@@ -204,9 +204,183 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(180deg, #f3e8ff, #d1c4e9);
+  background: linear-gradient(135deg, var(--purple-muted), #fdfcff);
   text-align: center;
   padding: 1.5rem;
+  padding-top: 8.5rem; /* Space for fixed banner and navbar */
+  overflow-x: hidden;
+}
+
+/* Variant B Immersive Breathing Components */
+.breathe-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem 0 3rem;
+}
+
+.breathe-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 2.25rem;
+  color: var(--purple-primary);
+  margin-bottom: 0.5rem;
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+}
+
+.mode-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(95, 58, 205, 0.15);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.mode-indicator .mode-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--purple-primary);
+}
+
+.immersive-circle-wrapper {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.immersive-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 60px rgba(95, 58, 205, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 6s cubic-bezier(0.4, 0, 0.2, 1), background 6s ease, box-shadow 6s ease;
+  will-change: transform, box-shadow;
+}
+
+.immersive-circle.box-timing {
+  transition-duration: 4s;
+}
+
+.immersive-circle.inhale {
+  transform: scale(1.55);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 100px rgba(95, 58, 205, 0.3);
+}
+
+.immersive-circle.hold {
+  transform: scale(1.55);
+  background: rgba(245, 240, 255, 0.9);
+  box-shadow: 0 0 80px rgba(95, 58, 205, 0.25);
+}
+
+.immersive-circle.hold-empty {
+  transform: scale(1);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 40px rgba(95, 58, 205, 0.12);
+}
+
+.immersive-circle.exhale {
+  transform: scale(1);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 0 40px rgba(95, 58, 205, 0.1);
+}
+
+.circle-inner-ring {
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  border: 2px dashed rgba(95, 58, 205, 0.2);
+  pointer-events: none;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background: rgba(255, 255, 255, 0.65);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.icon-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(95, 58, 205, 0.1);
+  background: #ffffff;
+  color: var(--purple-primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.icon-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-md);
+  color: var(--purple-hover);
+}
+
+.icon-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.icon-btn.primary {
+  width: 62px;
+  height: 62px;
+  background: var(--purple-primary);
+  color: #ffffff;
+  font-size: 1.35rem;
+  border: none;
+  box-shadow: 0 4px 14px rgba(95, 58, 205, 0.35);
+}
+
+.icon-btn.primary:hover {
+  background: var(--purple-hover);
+  box-shadow: 0 6px 18px rgba(95, 58, 205, 0.45);
+}
+
+.icon-btn.active {
+  background: var(--purple-muted);
+  color: var(--purple-primary);
+  border-color: var(--purple-primary);
 }
 .breathe__title {
   font-size: 2.5rem;
