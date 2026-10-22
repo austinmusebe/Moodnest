@@ -3,55 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resource Hub</title>
+    <title>Resource Hub - Moodnest</title>
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <style>
-      body {
-        padding-top: 5rem; /* Match navbar height */
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        background: linear-gradient(180deg, #f3e8ff, #d1c4e9);
-        font-family: "Poppins", sans-serif;
-      }
-      .content-wrapper {
-        flex-grow: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .resource-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .resource-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-          0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      }
-      .category-tab {
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-      .category-tab.active {
-        background-color: #9333ea;
-        color: white;
-      }
-    </style>
   </head>
-  <body>
+  <body class="resources__page">
     <div class="trust-banner">
       Moodnest is a self-care tool, not a substitute for professional mental
       health care. If you are in crisis,
@@ -82,51 +49,33 @@
       </div>
     </nav>
 
-    <div class="content-wrapper">
-      <div class="container mx-auto px-4 py-8">
-        <div class="bg-white shadow-lg rounded-xl max-w-4xl mx-auto p-8">
-          <h1 class="text-3xl font-bold text-purple-800 mb-6 text-center">
-            Resource Hub
-          </h1>
+    <!-- Header Section (Variant A) -->
+    <header class="resource-header">
+      <h1>Resource Hub</h1>
+      <p>
+        Curated tools, articles, and services to support your journey. Find what you need, when you need it.
+      </p>
+    </header>
 
-          <p class="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
-            Find helpful tools, articles, and services to support your mental
-            wellbeing journey. We've carefully curated these resources to help
-            you thrive.
-          </p>
-
-          <div class="flex flex-wrap justify-center gap-2 mb-8">
-            <div
-              class="category-tab active px-4 py-2 bg-purple-100 text-purple-800 rounded-full"
-              data-category="all"
-            >
-              All Resources
-            </div>
-            <div
-              class="category-tab px-4 py-2 bg-purple-100 text-purple-800 rounded-full"
-              data-category="articles"
-            >
-              Articles
-            </div>
-            <div
-              class="category-tab px-4 py-2 bg-purple-100 text-purple-800 rounded-full"
-              data-category="apps"
-            >
-              Apps
-            </div>
-            <div
-              class="category-tab px-4 py-2 bg-purple-100 text-purple-800 rounded-full"
-              data-category="crisis"
-            >
-              Crisis Support
-            </div>
-            <div
-              class="category-tab px-4 py-2 bg-purple-100 text-purple-800 rounded-full"
-              data-category="community"
-            >
-              Community
-            </div>
-          </div>
+    <main class="resource-container">
+      <!-- Filter Tabs -->
+      <div class="resource-filters">
+        <button type="button" class="filter-tab active" data-category="all">
+          All Resources
+        </button>
+        <button type="button" class="filter-tab" data-category="crisis">
+          Crisis Support
+        </button>
+        <button type="button" class="filter-tab" data-category="apps">
+          Apps
+        </button>
+        <button type="button" class="filter-tab" data-category="articles">
+          Articles
+        </button>
+        <button type="button" class="filter-tab" data-category="community">
+          Community
+        </button>
+      </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div
@@ -366,20 +315,7 @@
             </form>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="fixed bottom-8 right-8 opacity-50">
-      <img src="poses/yoga2.png" alt="Yoga Pose 1" class="w-32 h-32" />
-    </div>
-
-    <div class="fixed bottom-8 left-8 opacity-50">
-      <img
-        src="poses/yoga3.png"
-        alt="Yoga Pose 2"
-        class="w-32 h-32 transform -scale-x-100"
-      />
-    </div>
+    </main>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
