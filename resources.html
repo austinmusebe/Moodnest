@@ -77,173 +77,153 @@
         </button>
       </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div
-              class="resource-card bg-purple-50 rounded-lg p-6 shadow-md"
-              data-type="crisis"
-            >
-              <h3 class="text-xl font-bold text-purple-800 mb-2">
-                National Crisis Line
-              </h3>
-              <p class="text-gray-600 mb-4">
-                24/7 support for anyone in emotional distress or suicidal
-                crisis.
-              </p>
-              <div class="flex justify-between items-center">
-                <span
-                  class="text-sm bg-red-100 text-red-800 px-3 py-1 rounded-full"
-                  >Crisis Support</span
-                >
-                <a
-                  href="tel:988"
-                  class="text-purple-600 hover:underline font-bold"
-                  >Call 988</a
-                >
-              </div>
-            </div>
-
-            <div
-              class="resource-card bg-purple-50 rounded-lg p-6 shadow-md"
-              data-type="apps"
-            >
-              <h3 class="text-xl font-bold text-purple-800 mb-2">Woebot</h3>
-              <p class="text-gray-600 mb-4">
-                AI chatbot using CBT techniques to help manage mental health.
-              </p>
-              <div class="flex justify-between items-center">
-                <span
-                  class="text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
-                  >App</span
-                >
-                <a
-                  href="https://woebothealth.com"
-                  target="_blank"
-                  class="text-purple-600 hover:underline font-bold"
-                  >Visit Site</a
-                >
-              </div>
-            </div>
-
-            <div
-              class="resource-card bg-purple-50 rounded-lg p-6 shadow-md"
-              data-type="articles"
-            >
-              <h3 class="text-xl font-bold text-purple-800 mb-2">
-                Understanding Anxiety
-              </h3>
-              <p class="text-gray-600 mb-4">
-                Learn about common anxiety disorders and evidence-based
-                treatments.
-              </p>
-              <div class="flex justify-between items-center">
-                <span
-                  class="text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full"
-                  >Article</span
-                >
-                <a href="#" class="text-purple-600 hover:underline font-bold"
-                  >Read More</a
-                >
-              </div>
-            </div>
-
-            <div
-              class="resource-card bg-purple-50 rounded-lg p-6 shadow-md"
-              data-type="articles"
-            >
-              <h3 class="text-xl font-bold text-purple-800 mb-2">
-                Mindfulness for Beginners
-              </h3>
-              <p class="text-gray-600 mb-4">
-                Simple mindfulness techniques you can practice anywhere,
-                anytime.
-              </p>
-              <div class="flex justify-between items-center">
-                <span
-                  class="text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full"
-                  >Article</span
-                >
-                <a href="#" class="text-purple-600 hover:underline font-bold"
-                  >Read More</a
-                >
-              </div>
-            </div>
-
-            <div
-              class="resource-card bg-purple-50 rounded-lg p-6 shadow-md"
-              data-type="community"
-            >
-              <h3 class="text-xl font-bold text-purple-800 mb-2">7 Cups</h3>
-              <p class="text-gray-600 mb-4">
-                Online therapy and free support through trained volunteer
-                listeners.
-              </p>
-              <div class="flex justify-between items-center">
-                <span
-                  class="text-sm bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full"
-                  >Community</span
-                >
-                <a
-                  href="https://www.7cups.com"
-                  target="_blank"
-                  class="text-purple-600 hover:underline font-bold"
-                  >Visit Site</a
-                >
-              </div>
-            </div>
-
-            <div
-              class="resource-card bg-purple-50 rounded-lg p-6 shadow-md"
-              data-type="community"
-            >
-              <h3 class="text-xl font-bold text-purple-800 mb-2">
-                MeetUp Mental Health Groups
-              </h3>
-              <p class="text-gray-600 mb-4">
-                Find local support groups and communities focused on mental
-                wellbeing.
-              </p>
-              <div class="flex justify-between items-center">
-                <span
-                  class="text-sm bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full"
-                  >Community</span
-                >
-                <a
-                  href="https://www.meetup.com"
-                  target="_blank"
-                  class="text-purple-600 hover:underline font-bold"
-                  >Find Groups</a
-                >
-              </div>
-            </div>
-
-            <div
-              class="resource-card bg-purple-50 rounded-lg p-6 shadow-md"
-              data-type="crisis"
-            >
-              <h3 class="text-xl font-bold text-purple-800 mb-2">
-                Befrienders Kenya
-              </h3>
-              <p class="text-gray-600 mb-4">
-                Support for anyone in a crisis situation
-              </p>
-              <div class="flex justify-between items-center">
-                <span
-                  class="text-sm bg-red-100 text-red-800 px-3 py-1 rounded-full"
-                  >Crisis Support</span
-                >
-                <a
-                  class="text-purple-600 hover:underline font-bold"
-                  href="https://befrienders.org/find-support-now/befrienders-kenya/"
-                  >Visit the website</a
-                >
-                <br />
-                <a class="text-purple-600 hover:underline font-bold">
-                  <br />
-                  +254 722 178 177
-                </a>
-              </div>
-            </div>
+      <!-- Resource Cards Grid (Variant A) -->
+      <div class="resource-grid" id="resourceGrid">
+        <!-- 1. National Crisis Line -->
+        <div class="resource-card" data-type="crisis">
+          <div class="card-tag-wrapper">
+            <span class="card-tag tag-crisis">Crisis Support</span>
           </div>
+          <h3>National Crisis Line</h3>
+          <p>
+            24/7 support for anyone in emotional distress or suicidal crisis.
+          </p>
+          <div class="resource-action">
+            <a href="tel:988" class="resource-link">
+              Call 988 <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Befrienders Kenya -->
+        <div class="resource-card" data-type="crisis">
+          <div class="card-tag-wrapper">
+            <span class="card-tag tag-crisis">Crisis Support</span>
+          </div>
+          <h3>Befrienders Kenya</h3>
+          <p>
+            Free and confidential suicide prevention, emotional support, and crisis intervention.
+          </p>
+          <div class="resource-action">
+            <a
+              href="https://befrienders.org/find-support-now/befrienders-kenya/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="resource-link"
+            >
+              Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+            <a href="tel:+254722178177" class="resource-link">
+              +254 722 178 177 <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Woebot -->
+        <div class="resource-card" data-type="apps">
+          <div class="card-tag-wrapper">
+            <span class="card-tag tag-app">App</span>
+          </div>
+          <h3>Woebot</h3>
+          <p>
+            AI chatbot providing structured cognitive behavioral therapy (CBT) techniques to help manage daily stress.
+          </p>
+          <div class="resource-action">
+            <a
+              href="https://woebothealth.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="resource-link"
+            >
+              Visit Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. 7 Cups -->
+        <div class="resource-card" data-type="community">
+          <div class="card-tag-wrapper">
+            <span class="card-tag tag-community">Community</span>
+          </div>
+          <h3>7 Cups</h3>
+          <p>
+            Online therapy and free emotional support through trained active volunteer listeners and discussion forums.
+          </p>
+          <div class="resource-action">
+            <a
+              href="https://www.7cups.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="resource-link"
+            >
+              Visit Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. MeetUp Mental Health Groups -->
+        <div class="resource-card" data-type="community">
+          <div class="card-tag-wrapper">
+            <span class="card-tag tag-community">Community</span>
+          </div>
+          <h3>MeetUp Mental Health Groups</h3>
+          <p>
+            Discover local community support groups and peer meetups focused on mental wellbeing and human connection.
+          </p>
+          <div class="resource-action">
+            <a
+              href="https://www.meetup.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="resource-link"
+            >
+              Find Groups <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. Understanding Anxiety -->
+        <div class="resource-card" data-type="articles">
+          <div class="card-tag-wrapper">
+            <span class="card-tag tag-article">Article</span>
+          </div>
+          <h3>Understanding Anxiety</h3>
+          <p>
+            Learn about common anxiety disorders, physical and emotional symptoms, and evidence-based treatments.
+          </p>
+          <div class="resource-action">
+            <a
+              href="https://www.nimh.nih.gov/health/topics/anxiety-disorders"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="resource-link"
+            >
+              Read Guide <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 7. Mindfulness for Beginners -->
+        <div class="resource-card" data-type="articles">
+          <div class="card-tag-wrapper">
+            <span class="card-tag tag-article">Article</span>
+          </div>
+          <h3>Mindfulness for Beginners</h3>
+          <p>
+            Simple, practical mindfulness techniques you can practice anywhere, anytime to ground your thoughts and reset.
+          </p>
+          <div class="resource-action">
+            <a
+              href="https://www.mindful.org/meditation/mindfulness-getting-started/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="resource-link"
+            >
+              Read Guide <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+      </div>
 
           <div class="mt-12 p-6 bg-purple-100 rounded-lg">
             <h2 class="text-xl font-bold text-purple-800 mb-4">
