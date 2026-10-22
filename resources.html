@@ -243,8 +243,9 @@
           </div>
           <div class="form-group">
             <label for="resource-url">Website URL or Contact Link</label>
+            <!-- Changed from type="url" to type="text" to accept half-URLs and un-prefixed domains without strict browser validation -->
             <input
-              type="url"
+              type="text"
               id="resource-url"
               placeholder="https://... or tel:..."
               required
