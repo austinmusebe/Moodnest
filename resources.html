@@ -225,101 +225,156 @@
         </div>
       </div>
 
-          <div class="mt-12 p-6 bg-purple-100 rounded-lg">
-            <h2 class="text-xl font-bold text-purple-800 mb-4">
-              Suggest a Resource
-            </h2>
-            <p class="text-gray-600 mb-4">
-              Know of a helpful resource that should be included here? Let us
-              know!
-            </p>
-            <form class="space-y-4">
-              <div>
-                <label
-                  for="resource-name"
-                  class="block text-sm font-medium text-gray-700 mb-1"
-                  >Resource Name</label
-                >
-                <input
-                  type="text"
-                  id="resource-name"
-                  class="w-full p-2 border border-purple-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
-                />
-              </div>
-              <div>
-                <label
-                  for="resource-url"
-                  class="block text-sm font-medium text-gray-700 mb-1"
-                  >Website URL</label
-                >
-                <input
-                  type="url"
-                  id="resource-url"
-                  class="w-full p-2 border border-purple-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
-                />
-              </div>
-              <div>
-                <label
-                  for="resource-description"
-                  class="block text-sm font-medium text-gray-700 mb-1"
-                  >Brief Description</label
-                >
-                <textarea
-                  id="resource-description"
-                  rows="3"
-                  class="w-full p-2 border border-purple-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
-                ></textarea>
-              </div>
-              <div>
-                <label
-                  for="resource-category"
-                  class="block text-sm font-medium text-gray-700 mb-1"
-                  >Category</label
-                >
-                <select
-                  id="resource-category"
-                  class="w-full p-2 border border-purple-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
-                >
-                  <option value="articles">Articles</option>
-                  <option value="apps">Apps</option>
-                  <option value="crisis">Crisis Support</option>
-                  <option value="community">Community</option>
-                </select>
-              </div>
-              <button
-                type="submit"
-                class="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition"
-              >
-                Submit Resource
-              </button>
-            </form>
+      <!-- Suggest a Resource Section (Variant A) -->
+      <section class="submit-section" id="suggestSection">
+        <h2>Suggest a Resource</h2>
+        <p class="submit-desc">
+          Know of a helpful tool, crisis helpline, or article that belongs here? Let us know!
+        </p>
+        <form id="suggestResourceForm">
+          <div class="form-group">
+            <label for="resource-name">Resource Name</label>
+            <input
+              type="text"
+              id="resource-name"
+              placeholder="e.g. Headspace or Local Helpline"
+              required
+            />
           </div>
-        </div>
+          <div class="form-group">
+            <label for="resource-url">Website URL or Contact Link</label>
+            <input
+              type="url"
+              id="resource-url"
+              placeholder="https://... or tel:..."
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="resource-category">Category</label>
+            <select id="resource-category" required>
+              <option value="apps">Apps</option>
+              <option value="crisis">Crisis Support</option>
+              <option value="articles">Articles</option>
+              <option value="community">Community</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="resource-description">Brief Description</label>
+            <textarea
+              id="resource-description"
+              rows="3"
+              placeholder="A few words about why this resource is helpful..."
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            <i class="fa-solid fa-paper-plane"></i> Submit Resource
+          </button>
+        </form>
+      </section>
     </main>
+
+    <!-- Toast Notice -->
+    <div class="toast-notice" id="toastNotice" role="status" aria-live="polite">
+      <i class="fa-solid fa-circle-check" style="color: #4ade80;"></i>
+      <span id="toastMessage">Email draft opened! Hit send to submit your suggestion.</span>
+    </div>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const categoryTabs = document.querySelectorAll(".category-tab");
+        // Category filtering
+        const filterTabs = document.querySelectorAll(".filter-tab");
         const resourceCards = document.querySelectorAll(".resource-card");
 
-        // Category filtering
-        categoryTabs.forEach((tab) => {
+        filterTabs.forEach((tab) => {
           tab.addEventListener("click", () => {
-            // Update active tab
-            categoryTabs.forEach((t) => t.classList.remove("active"));
+            filterTabs.forEach((t) => t.classList.remove("active"));
             tab.classList.add("active");
 
             const category = tab.dataset.category;
 
-            // Filter resources
             resourceCards.forEach((card) => {
               if (category === "all" || card.dataset.type === category) {
-                card.style.display = "block";
+                card.style.display = "flex";
               } else {
                 card.style.display = "none";
               }
             });
           });
+        });
+
+        // Mailto Suggestion Handler
+        const form = document.getElementById("suggestResourceForm");
+        const toast = document.getElementById("toastNotice");
+        const toastMessage = document.getElementById("toastMessage");
+
+        function showToast(message) {
+          if (toastMessage) toastMessage.textContent = message;
+          if (toast) {
+            toast.classList.add("show");
+            setTimeout(() => {
+              toast.classList.remove("show");
+            }, 5000);
+          }
+        }
+
+        form?.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const name = document.getElementById("resource-name").value.trim();
+          const url = document.getElementById("resource-url").value.trim();
+          const category = document.getElementById("resource-category").value;
+          const desc = document.getElementById("resource-description").value.trim();
+
+          if (!name || !url) return;
+
+          // Local storage record backup
+          try {
+            const existing = JSON.parse(
+              localStorage.getItem("moodnest_suggestions") || "[]"
+            );
+            existing.push({
+              name,
+              url,
+              category,
+              desc,
+              timestamp: new Date().toISOString(),
+            });
+            localStorage.setItem(
+              "moodnest_suggestions",
+              JSON.stringify(existing)
+            );
+          } catch (err) {
+            console.warn("Could not write to localStorage:", err);
+          }
+
+          // Generate mailto link
+          const recipient = "austinmusebe@gmail.com";
+          const subject = encodeURIComponent(
+            `[Moodnest] New Resource Suggestion: ${name}`
+          );
+          const bodyText =
+            `Hi Austin,\n\n` +
+            `I would like to suggest a resource for Moodnest:\n\n` +
+            `• Resource Name: ${name}\n` +
+            `• Category: ${category}\n` +
+            `• URL / Contact: ${url}\n` +
+            `• Description:\n${desc}\n\n` +
+            `Submitted from Moodnest Resource Hub`;
+
+          const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${encodeURIComponent(
+            bodyText
+          )}`;
+
+          // Trigger email client
+          window.location.href = mailtoUrl;
+
+          // Feedback and form reset
+          showToast(
+            "Email draft opened! Hit send to submit your resource suggestion."
+          );
+          form.reset();
         });
       });
     </script>
