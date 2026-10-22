@@ -563,3 +563,310 @@ body {
   color: var(--text-muted);
   font-size: 0.95rem;
 }
+
+/* ==========================================================================
+   Resource Hub - Variant A (Structured Directory)
+   ========================================================================== */
+.resources__page {
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  min-height: 100vh;
+  padding-top: 7.5rem; /* Space for trust banner and fixed navbar */
+  display: flex;
+  flex-direction: column;
+}
+
+.resource-header {
+  background: var(--purple-muted);
+  padding: var(--space-12) var(--space-4);
+  text-align: center;
+  border-bottom: 1px solid rgba(95, 58, 205, 0.1);
+  margin-bottom: var(--space-8);
+}
+
+.resource-header h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--purple-primary);
+  margin-bottom: var(--space-2);
+}
+
+.resource-header p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.resource-container {
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-4) var(--space-16);
+  flex: 1;
+}
+
+/* Category Filters */
+.resource-filters {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  padding: 8px 22px;
+  background: var(--bg-card);
+  border: 1px solid #e2dfdb;
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  outline: none;
+}
+
+.filter-tab:hover {
+  border-color: var(--purple-primary);
+  color: var(--purple-primary);
+  transform: translateY(-1px);
+}
+
+.filter-tab.active {
+  background: var(--purple-primary);
+  color: #ffffff;
+  border-color: var(--purple-primary);
+  box-shadow: 0 4px 12px rgba(95, 58, 205, 0.25);
+}
+
+/* Resource Cards Grid */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.resource-card {
+  background: var(--bg-card);
+  border: 1px solid #e2dfdb;
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.resource-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: #d7d3cd;
+}
+
+.card-tag-wrapper {
+  margin-bottom: var(--space-4);
+}
+
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.tag-crisis {
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid rgba(198, 40, 40, 0.2);
+}
+
+.tag-app {
+  background: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid rgba(21, 101, 192, 0.2);
+}
+
+.tag-article {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid rgba(46, 125, 50, 0.2);
+}
+
+.tag-community {
+  background: #fff8e1;
+  color: #b78103;
+  border: 1px solid rgba(183, 129, 3, 0.25);
+}
+
+.resource-card h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: var(--space-2);
+}
+
+.resource-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin-bottom: var(--space-6);
+  flex: 1;
+}
+
+.resource-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-4);
+  border-top: 1px solid #f3f1ef;
+}
+
+.resource-link {
+  font-weight: 600;
+  color: var(--purple-primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  transition:
+    color 0.2s ease,
+    gap 0.2s ease;
+}
+
+.resource-link:hover {
+  color: var(--purple-hover);
+  gap: 9px;
+  text-decoration: underline;
+}
+
+/* Suggest a Resource Section */
+.submit-section {
+  background: var(--bg-card);
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  border: 1px solid #e2dfdb;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.submit-section h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: var(--space-2);
+  text-align: center;
+}
+
+.submit-section .submit-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.form-group {
+  margin-bottom: var(--space-4);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e2dfdb;
+  border-radius: var(--radius-md);
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background: #ffffff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--purple-primary);
+  box-shadow: 0 0 0 3px rgba(95, 58, 205, 0.12);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 13px;
+  background: var(--purple-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(95, 58, 205, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-submit:hover {
+  background: var(--purple-hover);
+  box-shadow: 0 6px 16px rgba(95, 58, 205, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Toast notice */
+.toast-notice {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--text-main);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 2000;
+  opacity: 0;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.toast-notice.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
